@@ -4,13 +4,7 @@ using Microsoft.Data.Sqlite;
 public class Banco
 {
     string conectionStringMemory = "Data Source=memory:";
-    static string conectionStringFile = @"Data Source=C:\Users\halan\OneDrive\Área de Trabalho\csharpSQLite\Banco.db";
-
-    public static void Conect()
-    {
-        using var conection = new SqliteConnection(conectionStringFile);
-        conection.Open();
-    }
+    static string conectionStringFile = @"Data Source=C:\Banco.db";
 
     public static void CriarTabela(string tituloTabela)
     {
@@ -35,7 +29,7 @@ public class Banco
         Console.Clear();
         while (reader.Read())
         {
-            Console.WriteLine($"ID: {reader["ID"]}");
+            Console.WriteLine($"ID: { reader["ID"] }");
             Console.WriteLine($"Título: {reader["Titulo"]}");
             Console.WriteLine($"Autor: {reader["Autor"]}");
             Console.WriteLine($"Ano de publicação: {reader["AnoDePublicacao"]}");
@@ -49,8 +43,26 @@ public class Banco
         using var conection = new SqliteConnection(conectionStringFile);
         conection.Open();
         
-        using var readCmd = new SqliteCommand($"DELETE FROM Livros WHERE ID = {id};", conection);
-        using var reader = readCmd.ExecuteReader();
+        using var command = new SqliteCommand($"DELETE FROM Livros WHERE ID = @id;", conection);
+        command.Parameters.AddWithValue("@id", id);
+
+        command.ExecuteNonQuery();
     }
+
+    public void AdicionarLivro(string titulo, string autor, int ano, string genero)
+    {
+        using var conection = new SqliteConnection(conectionStringFile);
+        conection.Open();
+
+        using var command = new SqliteCommand($"INSERT INTO Livros(Titulo, Autor, AnoDePublicacao, Genero) VALUES (@titulo, @autor, @ano, @genero)", conection);
+
+        command.Parameters.AddWithValue("@titulo", titulo);
+        command.Parameters.AddWithValue("@auotr", autor);
+        command.Parameters.AddWithValue("@ano", ano);
+        command.Parameters.AddWithValue("@genero", genero);
+
+        command.ExecuteNonQuery();
+    }
+    
 
 }

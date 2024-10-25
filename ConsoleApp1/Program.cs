@@ -5,9 +5,10 @@ class Program
 {
     static ConsoleKeyInfo opcao = new ConsoleKeyInfo();
     static Banco banco = new Banco();
+    
     static void Main()
     {
-        Banco.Conect();
+        // Banco.Conect();
 
         while(opcao.Key != ConsoleKey.Escape)
         {
@@ -26,13 +27,14 @@ class Program
                 Console.WriteLine("1 - Adicionar Livro");
                 Console.WriteLine("2 - Listar Livros");
                 Console.WriteLine("3 - Remover Livro");
+                Console.WriteLine("4 - Voltar");
 
                 opcao = Console.ReadKey();
 
                 switch (opcao.Key)
                 {
                     case ConsoleKey.D1:
-                        // AdicionarLivros();
+                        AdicionarLivro();
                         break;
 
                     case ConsoleKey.D2:
@@ -47,14 +49,32 @@ class Program
             }
         }
     
-
         static void RemoverLivro()
         {
             Console.Clear();
             Console.WriteLine("Digite o id do livro que você deseja remover:");
             int id = int.Parse(Console.ReadLine());
 
-            banco.DeletarLivro(id);
+            banco.DeletarLivro(id);     
+        }
+
+        static void AdicionarLivro()
+        {
+            Console.Clear();
+
+            Console.WriteLine("Digite o Título do Livro:");
+            string titulo = Console.ReadLine();
+
+            Console.WriteLine("Digite o Nome do Autor do Livro:");
+            string autor = Console.ReadLine();
+
+            Console.WriteLine("Digite o Ano de Publicação do Livro:");
+            int ano = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Digite o Gênero Livro:");
+            string genero = Console.ReadLine();
+
+            banco.AdicionarLivro(titulo, autor, ano, genero);
         }
     }
 }

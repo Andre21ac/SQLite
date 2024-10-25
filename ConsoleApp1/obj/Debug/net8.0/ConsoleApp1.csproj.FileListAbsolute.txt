@@ -38,3 +38,4 @@ C:\Users\halan\OneDrive\Área de Trabalho\csharpSQLite\ConsoleApp1\obj\Debug\net
 C:\Users\halan\OneDrive\Área de Trabalho\csharpSQLite\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.pdb
 C:\Users\halan\OneDrive\Área de Trabalho\csharpSQLite\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.genruntimeconfig.cache
 C:\Users\halan\OneDrive\Área de Trabalho\csharpSQLite\ConsoleApp1\obj\Debug\net8.0\ref\ConsoleApp1.dll
+C:\Users\halan\OneDrive\Área de Trabalho\csharpSQLite\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.sourcelink.json
