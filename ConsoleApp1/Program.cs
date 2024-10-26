@@ -74,7 +74,20 @@ class Program
             Console.WriteLine("Digite o Gênero Livro:");
             string genero = Console.ReadLine();
 
-            banco.AdicionarLivro(titulo, autor, ano, genero);
+            Console.WriteLine("Digite a quantidade de Páginas do Livro:");
+            int pags = int.Parse(Console.ReadLine());
+
+            try
+            {
+                banco.AdicionarLivro(titulo, autor, ano, genero, pags);
+                Console.Clear();
+                Console.WriteLine("Livro adicionado com sucesso!");
+                Thread.Sleep(2000);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao adicionar livro: {ex.Message}");
+            }
         }
     }
 }

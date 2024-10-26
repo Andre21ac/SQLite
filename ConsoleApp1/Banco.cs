@@ -4,7 +4,7 @@ using Microsoft.Data.Sqlite;
 public class Banco
 {
     string conectionStringMemory = "Data Source=memory:";
-    static string conectionStringFile = @"Data Source=C:\Banco.db";
+    static string conectionStringFile = @"Data Source=C:\Users\halan\OneDrive\Área de Trabalho\csharpSQLite\Banco.db";
 
     public static void CriarTabela(string tituloTabela)
     {
@@ -33,7 +33,8 @@ public class Banco
             Console.WriteLine($"Título: {reader["Titulo"]}");
             Console.WriteLine($"Autor: {reader["Autor"]}");
             Console.WriteLine($"Ano de publicação: {reader["AnoDePublicacao"]}");
-            Console.WriteLine($"Genêro: {reader["Genero"]}");
+            Console.WriteLine($"Gênero: {reader["Genero"]}");
+            Console.WriteLine($"Páginas: {reader["Paginas"]}");
             Console.WriteLine();
             Console.WriteLine("-------------------------------------");
         }
@@ -49,19 +50,19 @@ public class Banco
         command.ExecuteNonQuery();
     }
 
-    public void AdicionarLivro(string titulo, string autor, int ano, string genero)
+    public void AdicionarLivro(string titulo, string autor, int ano, string genero, int paginas)
     {
         using var conection = new SqliteConnection(conectionStringFile);
         conection.Open();
 
-        using var command = new SqliteCommand($"INSERT INTO Livros(Titulo, Autor, AnoDePublicacao, Genero) VALUES (@titulo, @autor, @ano, @genero)", conection);
+        using var addCommand = new SqliteCommand("INSERT INTO Livros (Titulo, Autor, AnoDePublicacao, Genero, Paginas) VALUES (@titulo, @autor, @ano, @genero, @pags);", conection);
+        addCommand.Parameters.AddWithValue("@titulo", titulo);
+        addCommand.Parameters.AddWithValue("@autor", autor);
+        addCommand.Parameters.AddWithValue("@ano", ano);
+        addCommand.Parameters.AddWithValue("@genero", genero);
+        addCommand.Parameters.AddWithValue("@pags", paginas);
 
-        command.Parameters.AddWithValue("@titulo", titulo);
-        command.Parameters.AddWithValue("@auotr", autor);
-        command.Parameters.AddWithValue("@ano", ano);
-        command.Parameters.AddWithValue("@genero", genero);
-
-        command.ExecuteNonQuery();
+        addCommand.ExecuteNonQuery();
     }
     
 
