@@ -55,7 +55,15 @@ class Program
             Console.WriteLine("Digite o id do livro que você deseja remover:");
             int id = int.Parse(Console.ReadLine());
 
-            banco.DeletarLivro(id);     
+            try{
+                banco.DeletarLivro(id);
+                Console.Clear();
+                Console.WriteLine("Livro removido com sucesso!");
+                Thread.Sleep(2000);
+            }
+            catch(Exception e){
+                Console.WriteLine($"Erro: {e.Message}");
+            } 
         }
 
         static void AdicionarLivro()
