@@ -25,18 +25,21 @@ public class Banco
         
         using var readCmd = new SqliteCommand("SELECT * FROM Livros;", conection);
         using var reader = readCmd.ExecuteReader();
-
+        
+        int i = 1;
         Console.Clear();
         while (reader.Read())
         {
-            Console.WriteLine($"ID: { reader["ID"] }");
+            Console.WriteLine($"Livro {i}");
             Console.WriteLine($"Título: {reader["Titulo"]}");
             Console.WriteLine($"Autor: {reader["Autor"]}");
             Console.WriteLine($"Ano de publicação: {reader["AnoDePublicacao"]}");
             Console.WriteLine($"Gênero: {reader["Genero"]}");
             Console.WriteLine($"Páginas: {reader["Paginas"]}");
+            Console.WriteLine($"ID: {reader["Id"]}");
             Console.WriteLine();
             Console.WriteLine("-------------------------------------");
+            i++;
         }
     }
     public void DeletarLivro(int id)
