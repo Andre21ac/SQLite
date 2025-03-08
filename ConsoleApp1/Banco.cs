@@ -53,6 +53,32 @@ public class Banco
 
         addCommand.ExecuteNonQuery();
     }
-    
+
+    public void PesquisarLivro(string titulo)
+    {
+        using var conection = new SqliteConnection(conectionStringFile);
+        conection.Open();
+
+        using var comando = new SqliteCommand($"SELECT * FROM Livros WHERE LOWER(Titulo) LIKE LOWER(@titulo);", conection);
+        comando.Parameters.AddWithValue("@titulo", "%" + titulo + "%");
+        
+        using var reader = comando.ExecuteReader();
+
+        int i = 0;
+        while (reader.Read())
+        {
+            Console.Clear();
+            Console.WriteLine($"Título: {reader["Titulo"]}");
+            Console.WriteLine($"Autor: {reader["Autor"]}");
+            Console.WriteLine($"Ano de publicação: {reader["AnoDePublicacao"]}");
+            Console.WriteLine($"Gênero: {reader["Genero"]}");
+            i++;
+        }
+        if (i == 0)
+        {
+            Console.Clear();
+            Console.WriteLine("O título do livro não foi encontrado!");
+        }
+    }
 
 }

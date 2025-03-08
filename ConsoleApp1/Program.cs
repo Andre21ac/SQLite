@@ -16,6 +16,7 @@ class Program
             Console.WriteLine("Bem vindo(a)!");
             Console.WriteLine("Selecione uma opção:");
             Console.WriteLine("1 - Gerenciar Biblioteca");
+            Console.WriteLine("2 - Pesquisar Livros");
             Console.WriteLine("ESC - Sair");
 
             opcao = Console.ReadKey();
@@ -46,6 +47,11 @@ class Program
                         RemoverLivro();
                         break;
                 }
+            }
+            else if (opcao.Key == ConsoleKey.D2)
+            {
+                PesquisarLivros();
+                Console.ReadKey();
             }
         }
     
@@ -120,6 +126,22 @@ class Program
             {
                 Console.WriteLine($"Erro ao adicionar livro: {ex.Message}");
             }
+        }
+
+        static void PesquisarLivros()
+        {
+            Console.Clear();
+            Console.Write("Digite o título do livro: ");
+            
+            string titulo = Console.ReadLine();
+            while (titulo == "")
+            {
+                Console.Clear();
+                Console.WriteLine("O Título não pode ser vazio!");
+                Console.Write("Digite Novamente: ");
+                titulo = Console.ReadLine();
+            }
+            banco.PesquisarLivro(titulo);
         }
     }
 }
