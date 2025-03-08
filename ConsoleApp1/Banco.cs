@@ -4,19 +4,7 @@ using Microsoft.Data.Sqlite;
 public class Banco
 {
     string conectionStringMemory = "Data Source=memory:";
-    static string conectionStringFile = @"Data Source=C:\Users\halan\OneDrive\Área de Trabalho\csharpSQLite\Banco.db";
-
-    public static void CriarTabela(string tituloTabela)
-    {
-        using var conection = new SqliteConnection(conectionStringFile);
-        conection.Open();
-
-        using var cmd = new SqliteCommand($"CREATE TABLE IF NOT EXISTS {tituloTabela} " + 
-            "(ID INTEGER PRIMARY KEY, Name TEXT);", conection);
-        cmd.ExecuteNonQuery();
-
-        Console.WriteLine($"tabela: {tituloTabela} Criado com sucesso!");
-    }
+    static string conectionStringFile = @"Data Source=C:\Users\andre\RiderProjects\SQLite\Banco.db;";
 
     public void ListarLivros()
     {
@@ -36,19 +24,18 @@ public class Banco
             Console.WriteLine($"Ano de publicação: {reader["AnoDePublicacao"]}");
             Console.WriteLine($"Gênero: {reader["Genero"]}");
             Console.WriteLine($"Páginas: {reader["Paginas"]}");
-            Console.WriteLine($"ID: {reader["Id"]}");
             Console.WriteLine();
             Console.WriteLine("-------------------------------------");
             i++;
         }
     }
-    public void DeletarLivro(int id)
+    public void DeletarLivro(string titulo)
     {
         using var conection = new SqliteConnection(conectionStringFile);
         conection.Open();
         
-        using var command = new SqliteCommand($"DELETE FROM Livros WHERE ID = @id;", conection);
-        command.Parameters.AddWithValue("@id", id);
+        using var command = new SqliteCommand($"DELETE FROM Livros WHERE Titulo = @titulo;", conection);
+        command.Parameters.AddWithValue("@titulo", titulo);
 
         command.ExecuteNonQuery();
     }

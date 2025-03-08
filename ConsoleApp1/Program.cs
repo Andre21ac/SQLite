@@ -52,11 +52,11 @@ class Program
         static void RemoverLivro()
         {
             Console.Clear();
-            Console.WriteLine("Digite o id do livro que você deseja remover:");
-            int id = int.Parse(Console.ReadLine());
+            Console.WriteLine("Digite o titulo do livro que você deseja remover:");
+            string titulo = Console.ReadLine();
 
             try{
-                banco.DeletarLivro(id);
+                banco.DeletarLivro(titulo);
                 Console.Clear();
                 Console.WriteLine("Livro removido com sucesso!");
                 Thread.Sleep(2000);
