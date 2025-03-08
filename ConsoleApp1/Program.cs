@@ -69,25 +69,49 @@ class Program
         static void AdicionarLivro()
         {
             Console.Clear();
-
-            Console.WriteLine("Digite o Título do Livro:");
+            
+            Console.Write("Digite o Título do Livro: ");
             string titulo = Console.ReadLine();
+            while (titulo == "")
+            {
+                Console.Clear();
+                Console.WriteLine("O Titulo não pode ser vazio!");
+                Console.Write("Digite Novamente: ");
+                titulo = Console.ReadLine();
+            }
 
-            Console.WriteLine("Digite o Nome do Autor do Livro:");
+            Console.Write("Digite o Nome do Autor do Livro: ");
             string autor = Console.ReadLine();
+            while (autor == "")
+            {
+                Console.Clear();
+                Console.WriteLine("O Nome do Autor não pode ser vazio!");
+                Console.Write("Digite novamente: ");
+                autor = Console.ReadLine();
+            }
 
-            Console.WriteLine("Digite o Ano de Publicação do Livro:");
-            int ano = int.Parse(Console.ReadLine());
+            Console.Write("Digite o Ano de Publicação do Livro: ");
+            int ano;
+            while (!int.TryParse(Console.ReadLine(), out ano) || ano <= 0)
+            {
+                Console.Clear();
+                Console.WriteLine("O ano de publicação deve ser um número válido e maior que zero!");
+                Console.Write("Digite novamente: ");
+            }
 
-            Console.WriteLine("Digite o Gênero Livro:");
+            Console.Write("Digite o Gênero Livro: ");
             string genero = Console.ReadLine();
-
-            Console.WriteLine("Digite a quantidade de Páginas do Livro:");
-            int pags = int.Parse(Console.ReadLine());
-
+            while (genero == "")
+            {
+                Console.Clear();
+                Console.WriteLine("O genêro não pode ser vazio!");
+                Console.Write("Digite Novamente: ");
+                genero = Console.ReadLine();
+            }
+            
             try
             {
-                banco.AdicionarLivro(titulo, autor, ano, genero, pags);
+                banco.AdicionarLivro(titulo, autor, ano, genero);
                 Console.Clear();
                 Console.WriteLine("Livro adicionado com sucesso!");
                 Thread.Sleep(2000);

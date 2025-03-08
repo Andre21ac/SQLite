@@ -18,12 +18,12 @@ public class Banco
         Console.Clear();
         while (reader.Read())
         {
+            Console.WriteLine();
             Console.WriteLine($"Livro {i}");
             Console.WriteLine($"Título: {reader["Titulo"]}");
             Console.WriteLine($"Autor: {reader["Autor"]}");
             Console.WriteLine($"Ano de publicação: {reader["AnoDePublicacao"]}");
             Console.WriteLine($"Gênero: {reader["Genero"]}");
-            Console.WriteLine($"Páginas: {reader["Paginas"]}");
             Console.WriteLine();
             Console.WriteLine("-------------------------------------");
             i++;
@@ -40,17 +40,16 @@ public class Banco
         command.ExecuteNonQuery();
     }
 
-    public void AdicionarLivro(string titulo, string autor, int ano, string genero, int paginas)
+    public void AdicionarLivro(string titulo, string autor, int ano, string genero)
     {
         using var conection = new SqliteConnection(conectionStringFile);
         conection.Open();
 
-        using var addCommand = new SqliteCommand("INSERT INTO Livros (Titulo, Autor, AnoDePublicacao, Genero, Paginas) VALUES (@titulo, @autor, @ano, @genero, @pags);", conection);
+        using var addCommand = new SqliteCommand("INSERT INTO Livros (Titulo, Autor, AnoDePublicacao, Genero) VALUES (@titulo, @autor, @ano, @genero);", conection);
         addCommand.Parameters.AddWithValue("@titulo", titulo);
         addCommand.Parameters.AddWithValue("@autor", autor);
         addCommand.Parameters.AddWithValue("@ano", ano);
         addCommand.Parameters.AddWithValue("@genero", genero);
-        addCommand.Parameters.AddWithValue("@pags", paginas);
 
         addCommand.ExecuteNonQuery();
     }
