@@ -1,6 +1,7 @@
 ﻿using ConsoleApp1.Entities;
 using ConsoleApp1.Infraestruct;
 using ConsoleTables;
+using System.Globalization;
 
 class Program
 {
@@ -96,12 +97,27 @@ class Program
 
             Console.WriteLine("Digite o Título do Livro:");
             string titulo = Console.ReadLine();
-
+            while(titulo == "")
+            {
+                Console.Clear();
+                Console.WriteLine("O titulo não pode ser vazio!");
+                titulo = Console.ReadLine();
+            }
+      
             Console.WriteLine("Digite o Nome do Autor do Livro:");
             string autor = Console.ReadLine();
+            while (autor == "")
+            {
+                Console.Clear();
+                Console.WriteLine("O nome do autor não pode ser vazio!");
+                autor = Console.ReadLine();
+            }
 
-            Console.WriteLine("Digite o Ano de Publicação do Livro:");
-            int ano = int.Parse(Console.ReadLine());
+            while(true)
+            {
+                Console.WriteLine("Digite o ano de publicação do livro:");
+                Console.Clear();
+            }
 
             Console.WriteLine("Digite o Gênero Livro:");
             string genero = Console.ReadLine();

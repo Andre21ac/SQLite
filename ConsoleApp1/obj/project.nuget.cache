@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AwybyuDvWXk=",
+  "dgSpecHash": "I8+Tq6SDUhE=",
   "success": true,
-  "projectFilePath": "c:\\Dev\\Projetos\\C#\\SQLite\\ConsoleApp1\\ConsoleApp1.csproj",
+  "projectFilePath": "C:\\Dev\\Projetos\\C#\\SQLite\\ConsoleApp1\\ConsoleApp1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\andre\\.nuget\\packages\\consoletables\\2.6.2\\consoletables.2.6.2.nupkg.sha512",
     "C:\\Users\\andre\\.nuget\\packages\\microsoft.data.sqlite\\8.0.10\\microsoft.data.sqlite.8.0.10.nupkg.sha512",
