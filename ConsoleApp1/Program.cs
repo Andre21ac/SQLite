@@ -73,8 +73,15 @@ class Program
             int id = int.Parse(Console.ReadLine());
 
             try{
-                //banco.DeletarLivro(id);
-                Console.Clear();
+                var dbContext = new SqLiteDbContext();
+
+                var livro = dbContext.Livros.FirstOrDefault(l => l.ID == id);
+
+                if (livro != null)
+                {
+                    dbContext.Livros.Remove(livro);
+                    dbContext.SaveChanges();
+                }
                 Console.WriteLine("Livro removido com sucesso!");
                 Thread.Sleep(2000);
             }
