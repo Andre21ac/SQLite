@@ -5,6 +5,18 @@
     {
       "AbsoluteMoniker": "D:0:0:{4DC030E0-BD58-4617-A704-E239A2324862}|ConsoleApp1\\ConsoleApp1.csproj|c:\\dev\\projetos\\c#\\sqlite\\consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4DC030E0-BD58-4617-A704-E239A2324862}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC030E0-BD58-4617-A704-E239A2324862}|ConsoleApp1\\ConsoleApp1.csproj|c:\\dev\\projetos\\c#\\sqlite\\consoleapp1\\infraestruct\\sqlitedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DC030E0-BD58-4617-A704-E239A2324862}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\infraestruct\\sqlitedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC030E0-BD58-4617-A704-E239A2324862}|ConsoleApp1\\ConsoleApp1.csproj|c:\\dev\\projetos\\c#\\sqlite\\consoleapp1\\entities\\livro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DC030E0-BD58-4617-A704-E239A2324862}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\entities\\livro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4DC030E0-BD58-4617-A704-E239A2324862}|ConsoleApp1\\ConsoleApp1.csproj|c:\\dev\\projetos\\c#\\sqlite\\consoleapp1\\banco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4DC030E0-BD58-4617-A704-E239A2324862}|ConsoleApp1\\ConsoleApp1.csproj|solutionrelative:consoleapp1\\banco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -29,6 +41,49 @@
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Banco.cs",
+              "DocumentMoniker": "C:\\Dev\\Projetos\\C#\\SQLite\\ConsoleApp1\\Banco.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Banco.cs",
+              "ToolTip": "C:\\Dev\\Projetos\\C#\\SQLite\\ConsoleApp1\\Banco.cs",
+              "RelativeToolTip": "ConsoleApp1\\Banco.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACAAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T13:13:43.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Livro.cs",
+              "DocumentMoniker": "C:\\Dev\\Projetos\\C#\\SQLite\\ConsoleApp1\\Entities\\Livro.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Entities\\Livro.cs",
+              "ToolTip": "C:\\Dev\\Projetos\\C#\\SQLite\\ConsoleApp1\\Entities\\Livro.cs",
+              "RelativeToolTip": "ConsoleApp1\\Entities\\Livro.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T12:58:32.815Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SqLiteDbContext.cs",
+              "DocumentMoniker": "C:\\Dev\\Projetos\\C#\\SQLite\\ConsoleApp1\\Infraestruct\\SqLiteDbContext.cs",
+              "RelativeDocumentMoniker": "ConsoleApp1\\Infraestruct\\SqLiteDbContext.cs",
+              "ToolTip": "C:\\Dev\\Projetos\\C#\\SQLite\\ConsoleApp1\\Infraestruct\\SqLiteDbContext.cs",
+              "RelativeToolTip": "ConsoleApp1\\Infraestruct\\SqLiteDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-21T12:42:33.893Z",
+              "EditorCaption": ""
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
@@ -36,7 +91,7 @@
               "RelativeDocumentMoniker": "ConsoleApp1\\Program.cs",
               "ToolTip": "C:\\Dev\\Projetos\\C#\\SQLite\\ConsoleApp1\\Program.cs",
               "RelativeToolTip": "ConsoleApp1\\Program.cs",
-              "ViewState": "AgIAAEAAAAAAAAAAAAAQwFwAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAADgAAAAAAAAAAADwv0EAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-09T20:58:38.95Z",
               "EditorCaption": ""

@@ -8,7 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Entitys\**" />
+    <EmbeddedResource Remove="Entitys\**" />
+    <None Remove="Entitys\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ConsoleTables" Version="2.6.2" />
     <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.5" />
   </ItemGroup>
 
 </Project>

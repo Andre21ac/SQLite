@@ -1,10 +1,10 @@
-﻿using System;
-using Microsoft.Data.Sqlite;
+﻿using ConsoleApp1.Entities;
+using ConsoleApp1.Infraestruct;
+using ConsoleTables;
 
 class Program
 {
     static ConsoleKeyInfo opcao = new ConsoleKeyInfo();
-    static Banco banco = new Banco();
     
     static void Main()
     {
@@ -35,10 +35,11 @@ class Program
                 {
                     case ConsoleKey.D1:
                         AdicionarLivro();
+                        Console.ReadKey();
                         break;
 
                     case ConsoleKey.D2:
-                        banco.ListarLivros();
+                        ListarLivros();
                         Console.ReadKey();
                         break;
                 
@@ -48,6 +49,22 @@ class Program
                 }
             }
         }
+
+        static void ListarLivros()
+        {
+            Console.Clear();
+
+            var dbContext = new SqLiteDbContext();
+            var livros = dbContext.Livros.ToList();
+
+            var table = new ConsoleTable("ID", "Título", "Autor", "Ano", "Gênero", "Páginas");
+
+            foreach (var livro in livros)
+            {
+                table.AddRow(livro.ID, livro.Titulo, livro.Autor, livro.AnoDePublicacao, livro.Genero, livro.Paginas);
+            }
+            table.Write();
+        }
     
         static void RemoverLivro()
         {
@@ -56,7 +73,7 @@ class Program
             int id = int.Parse(Console.ReadLine());
 
             try{
-                banco.DeletarLivro(id);
+                //banco.DeletarLivro(id);
                 Console.Clear();
                 Console.WriteLine("Livro removido com sucesso!");
                 Thread.Sleep(2000);
@@ -85,17 +102,22 @@ class Program
             Console.WriteLine("Digite a quantidade de Páginas do Livro:");
             int pags = int.Parse(Console.ReadLine());
 
-            try
+            var dbContext = new SqLiteDbContext();
+
+            var entity = new Livro
             {
-                banco.AdicionarLivro(titulo, autor, ano, genero, pags);
-                Console.Clear();
-                Console.WriteLine("Livro adicionado com sucesso!");
-                Thread.Sleep(2000);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Erro ao adicionar livro: {ex.Message}");
-            }
+                Titulo = titulo,
+                Autor = autor,
+                AnoDePublicacao = ano,
+                Genero = genero,
+                Paginas = pags
+            };
+
+            dbContext.Livros.Add(entity);
+            dbContext.SaveChanges();
+
+            Console.Clear();
+            Console.WriteLine("Livro Adicionado com sucesso!");
         }
     }
 }
