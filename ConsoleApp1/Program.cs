@@ -9,8 +9,6 @@ class Program
     
     static void Main()
     {
-        // Banco.Conect();
-
         while(opcao.Key != ConsoleKey.Escape)
         {
             Console.Clear();
@@ -40,6 +38,7 @@ class Program
 
                     case ConsoleKey.D2:
                         ListarLivros();
+                        Console.WriteLine("Digite qualquer tecla para voltar");
                         Console.ReadKey();
                         break;
                 
@@ -57,50 +56,48 @@ class Program
             var dbContext = new SqLiteDbContext();
             var livros = dbContext.Livros.ToList();
 
-            var table = new ConsoleTable("ID", "Título", "Autor", "Ano", "Gênero", "Páginas");
+            var table = new ConsoleTable("Livro", "Título", "Autor", "Ano", "Gênero", "Páginas");
+
+            int i = 1;
 
             foreach (var livro in livros)
             {
-                table.AddRow(livro.ID, livro.Titulo, livro.Autor, livro.AnoDePublicacao, livro.Genero, livro.Paginas);
+                table.AddRow(i, livro.Titulo, livro.Autor, livro.AnoDePublicacao, livro.Genero, livro.Paginas);
+                i++;
             }
             table.Write();
-
-            Console.WriteLine("Digite qualquer tecla para voltar");
         }
     
         static void RemoverLivro()
         {
             Console.Clear();
-            Console.WriteLine("Digite o id do livro que você deseja remover:");
-            string id = Console.ReadLine();
+            ListarLivros();
+            Console.WriteLine("Digite o título do livro que você deseja remover:");
+            string titulo = Console.ReadLine();
                                     
-            bool deuCerto = int.TryParse(id, out var idConvertido);
-
-            if(deuCerto != true)
+            while(titulo == "")
             {
-                Console.Clear();
-                Console.WriteLine("O ID do livro precisa ser um número inteiro.");
-                Thread.Sleep(2000);
+                Console.WriteLine("O título do livro não pode ser vazio. Digite novamente:");
+                titulo = Console.ReadLine();
             }
 
-            else
-            {
                 try
                 {
                     var dbContext = new SqLiteDbContext();
 
-                    var livro = dbContext.Livros.FirstOrDefault(l => l.ID == idConvertido);
+                    var livro = dbContext.Livros.FirstOrDefault(l => l.Titulo == titulo);
 
                     if (livro != null)
                     {
                         dbContext.Livros.Remove(livro);
                         dbContext.SaveChanges();
+                        Console.Clear();
                         Console.WriteLine("Livro removido com sucesso!");
                         Thread.Sleep(2000);
                     }
                     else
                     {
-                        Console.WriteLine("O ID do livro que você digitou não foi encontrado!");
+                        Console.WriteLine("O título do livro que você digitou não foi encontrado!");
                         Thread.Sleep(2000);
                     }
                 }
@@ -108,7 +105,6 @@ class Program
                 {
                     Console.WriteLine($"Erro: {e.Message}");
                 }
-            }
         }
 
         static void AdicionarLivro()
