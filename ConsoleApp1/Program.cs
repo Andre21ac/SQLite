@@ -36,7 +36,6 @@ class Program
                 {
                     case ConsoleKey.D1:
                         AdicionarLivro();
-                        Console.ReadKey();
                         break;
 
                     case ConsoleKey.D2:
@@ -65,30 +64,51 @@ class Program
                 table.AddRow(livro.ID, livro.Titulo, livro.Autor, livro.AnoDePublicacao, livro.Genero, livro.Paginas);
             }
             table.Write();
+
+            Console.WriteLine("Digite qualquer tecla para voltar");
         }
     
         static void RemoverLivro()
         {
             Console.Clear();
             Console.WriteLine("Digite o id do livro que você deseja remover:");
-            int id = int.Parse(Console.ReadLine());
+            string id = Console.ReadLine();
+                                    
+            bool deuCerto = int.TryParse(id, out var idConvertido);
 
-            try{
-                var dbContext = new SqLiteDbContext();
-
-                var livro = dbContext.Livros.FirstOrDefault(l => l.ID == id);
-
-                if (livro != null)
-                {
-                    dbContext.Livros.Remove(livro);
-                    dbContext.SaveChanges();
-                }
-                Console.WriteLine("Livro removido com sucesso!");
+            if(deuCerto != true)
+            {
+                Console.Clear();
+                Console.WriteLine("O ID do livro precisa ser um número inteiro.");
                 Thread.Sleep(2000);
             }
-            catch(Exception e){
-                Console.WriteLine($"Erro: {e.Message}");
-            } 
+
+            else
+            {
+                try
+                {
+                    var dbContext = new SqLiteDbContext();
+
+                    var livro = dbContext.Livros.FirstOrDefault(l => l.ID == idConvertido);
+
+                    if (livro != null)
+                    {
+                        dbContext.Livros.Remove(livro);
+                        dbContext.SaveChanges();
+                        Console.WriteLine("Livro removido com sucesso!");
+                        Thread.Sleep(2000);
+                    }
+                    else
+                    {
+                        Console.WriteLine("O ID do livro que você digitou não foi encontrado!");
+                        Thread.Sleep(2000);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Erro: {e.Message}");
+                }
+            }
         }
 
         static void AdicionarLivro()
@@ -113,17 +133,53 @@ class Program
                 autor = Console.ReadLine();
             }
 
-            while(true)
+            Console.WriteLine("Digite o ano de publicação do Livro:");
+            string ano = Console.ReadLine();
+
+            bool converterAno = int.TryParse(ano, out int anoconvertido);
+
+            while (converterAno != true || anoconvertido < 0)
             {
-                Console.WriteLine("Digite o ano de publicação do livro:");
                 Console.Clear();
+                Console.WriteLine("O ano precisar ser um número inteiro e maior que zero!");
+                string anoString = Console.ReadLine();
+
+                bool convertAno = int.TryParse(anoString, out anoconvertido);
+
+                if(convertAno == true)
+                {
+                    converterAno = true;
+                }
             }
 
             Console.WriteLine("Digite o Gênero Livro:");
             string genero = Console.ReadLine();
 
+            while(genero == "")
+            {
+                Console.Clear();
+                Console.WriteLine("O gênero não pode ser vazio!");
+                genero = Console.ReadLine();
+            }
+
             Console.WriteLine("Digite a quantidade de Páginas do Livro:");
-            int pags = int.Parse(Console.ReadLine());
+            string pags = Console.ReadLine();
+
+            bool converterPags = int.TryParse(pags, out int pagconvertida);
+
+            while (converterPags != true || pagconvertida < 0)
+            {
+                Console.Clear();
+                Console.WriteLine("A quntidade de páginas precisa ser um número inteiro e maior que zero!");
+                string pagString = Console.ReadLine();
+
+                bool convertPag = int.TryParse(pagString, out pagconvertida);
+
+                if (converterPags == true)
+                {
+                    converterPags = true;
+                }
+            }
 
             var dbContext = new SqLiteDbContext();
 
@@ -131,9 +187,9 @@ class Program
             {
                 Titulo = titulo,
                 Autor = autor,
-                AnoDePublicacao = ano,
+                AnoDePublicacao = anoconvertido,
                 Genero = genero,
-                Paginas = pags
+                Paginas = pagconvertida
             };
 
             dbContext.Livros.Add(entity);
@@ -141,6 +197,7 @@ class Program
 
             Console.Clear();
             Console.WriteLine("Livro Adicionado com sucesso!");
+            Thread.Sleep(2000);
         }
     }
 }

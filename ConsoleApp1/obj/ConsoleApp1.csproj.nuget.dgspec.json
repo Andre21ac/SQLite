@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Dev\\Projetos\\C#\\SQLite\\ConsoleApp1\\ConsoleApp1.csproj": {}
+    "C:\\Users\\André\\Desktop\\SQLite\\ConsoleApp1\\ConsoleApp1.csproj": {}
   },
   "projects": {
-    "C:\\Dev\\Projetos\\C#\\SQLite\\ConsoleApp1\\ConsoleApp1.csproj": {
+    "C:\\Users\\André\\Desktop\\SQLite\\ConsoleApp1\\ConsoleApp1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Dev\\Projetos\\C#\\SQLite\\ConsoleApp1\\ConsoleApp1.csproj",
+        "projectUniqueName": "C:\\Users\\André\\Desktop\\SQLite\\ConsoleApp1\\ConsoleApp1.csproj",
         "projectName": "ConsoleApp1",
-        "projectPath": "C:\\Dev\\Projetos\\C#\\SQLite\\ConsoleApp1\\ConsoleApp1.csproj",
-        "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-        "outputPath": "C:\\Dev\\Projetos\\C#\\SQLite\\ConsoleApp1\\obj\\",
+        "projectPath": "C:\\Users\\André\\Desktop\\SQLite\\ConsoleApp1\\ConsoleApp1.csproj",
+        "packagesPath": "C:\\Users\\André\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\André\\Desktop\\SQLite\\ConsoleApp1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\André\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -83,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
