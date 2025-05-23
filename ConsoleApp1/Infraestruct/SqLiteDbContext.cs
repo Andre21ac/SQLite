@@ -9,7 +9,9 @@ namespace ConsoleApp1.Infraestruct
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=C:\\Dev\\Projetos\\C#\\SQLite\\Banco.db");
+            var dbPath = Path.Combine(AppContext.BaseDirectory, "Banco.db");
+
+            optionsBuilder.UseSqlite($"Data Source={dbPath}");
         }
     }
 }
